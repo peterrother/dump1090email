@@ -68,6 +68,6 @@ done
 
 # Delete the oldest processed line (line 1) when we reach the max threshold
 CUR_PROCESSED=`cat dump1090email.processed  | wc -l`
-if expr "$CUR_PROCESSED" ">=" "$PROCESSED_FILE_MAX"; then
+if (( $CUR_PROCESSED >= $PROCESSED_FILE_MAX )); then
 	sed -i '1d' dump1090email.processed
 fi
