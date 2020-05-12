@@ -62,7 +62,7 @@ do
 		echo $LAST_AIRCRAFT >> $PROCESSED_FILE
 
 		MSG="Timestamp: $DATE \nFlight: $FLIGHT \nHex Code: $HEX \nAltitude: $ALTITUDE ft\nVertical Speed: $VERT_RATE fpm\nTrack: $TRACK°\nGround Speed: $SPEED kts\n\nfr24://$FLIGHT\nhttp://flightradar24.com/$FLIGHT"
-		`/usr/bin/mail -s "Plane Spotted" -aFrom:"$MY_RADAR 1090MHz Feed <$FROM_EMAIL>" $TO_EMAIL <<< $(echo -e "$MSG")`
+		`/usr/bin/mail -s "Aircraft Spotted" -aFrom:"$MY_RADAR 1090MHz Feed <$FROM_EMAIL>" $TO_EMAIL <<< $(echo -e "$MSG")`
 	done
 done
 
