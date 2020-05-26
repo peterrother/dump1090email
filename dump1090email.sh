@@ -67,7 +67,7 @@ do
 done
 
 # Delete the oldest processed line (line 1) when we reach the max threshold
-CUR_PROCESSED=`cat dump1090email.processed  | wc -l`
+CUR_PROCESSED=`cat $PROCESSED_FILE | wc -l`
 if (( $CUR_PROCESSED >= $PROCESSED_FILE_MAX )); then
-	sed -i '1d' dump1090email.processed
+	sed -i '1d' $PROCESSED_FILE
 fi
