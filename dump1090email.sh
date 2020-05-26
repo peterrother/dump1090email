@@ -53,12 +53,16 @@ do
 		SPEED=`/usr/bin/jq '.speed' <<< $CUR_AIRCRAFT`
 		SEEN=`/usr/bin/jq '.seen' <<< $CUR_AIRCRAFT`
 
-		DUP_REDUCT="$FLIGHT~~$HEX~~$ALTITUDE~~$VERT_RATE~~$TRACK~~$SPEED"
+		DUP_REDUCT="$FLIGHT~~$HEX"
 		if grep -Fxq "$DUP_REDUCT" $PROCESSED_FILE; then
 			continue
 		fi
+		
+		if [[ "$FLIGHT" == "null" ]]; then
+			continue
+		fi
 
-		LAST_AIRCRAFT="$FLIGHT~~$HEX~~$ALTITUDE~~$VERT_RATE~~$TRACK~~$SPEED"
+		LAST_AIRCRAFT="$FLIGHT~~$HEX"
 		echo $LAST_AIRCRAFT >> $PROCESSED_FILE
 
 		MSG="Timestamp: $DATE \nFlight: $FLIGHT \nHex Code: $HEX \nAltitude: $ALTITUDE ft\nVertical Speed: $VERT_RATE fpm\nTrack: $TRACK°\nGround Speed: $SPEED kts\n\nfr24://$FLIGHT\nhttp://flightradar24.com/$FLIGHT"
