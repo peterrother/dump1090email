@@ -8,6 +8,8 @@ This script will process the dump1090 log files and notify via email whenever an
 Package requirements
 ---
 * jq (https://stedolan.github.io/jq/)
+* mailutils (https://mailutils.org)
+* smtp (postfix or sendmail)
 
 Installation
 ---
