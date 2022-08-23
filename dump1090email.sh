@@ -29,6 +29,10 @@ PROCESSED_FILE=$DUMP1090EMAIL_DIR/dump1090email.processed
 PROCESSED_FILE_MAX=1000
 JSON_DIR=/run/dump1090-mutability
 
+if [ ! -e "$PROCESSED_FILE" ]; then
+	touch "$PROCESSED_FILE"
+fi
+
 # Main processing
 for f in `ls $JSON_DIR/history_*.json`
 do
